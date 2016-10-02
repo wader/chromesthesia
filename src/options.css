@@ -1,0 +1,38 @@
+body {
+  min-width: 810px;
+}
+
+.section {
+  padding-bottom: 20px;
+}
+
+.option input[type=text] {
+  width: 250px;
+}
+
+.section .name {
+  font-size: 1.3em;
+}
+
+.options {
+  display: inline-block;
+  vertical-align: top;
+  width: 400px;
+}
+
+.option {
+  padding-top: 10px;
+}
+
+.option label {
+    width: 120px;
+    text-align: right;
+    padding-right: 10px;
+    display: inline-block;
+}
+
+.description {
+  display: inline-block;
+  width: 400px;
+  margin-top: -10px;
+}

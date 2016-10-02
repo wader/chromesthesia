@@ -1,0 +1,51 @@
+{
+  "rules": {
+    "indent": [
+      2,
+      2
+    ],
+    "quotes": [
+      2,
+      "single"
+    ],
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "semi": [
+      2,
+      "always"
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "local",
+        "argsIgnorePattern": "^_"
+      }
+    ]
+  },
+  "strict": ["error", "global"],
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "extends": "eslint:recommended",
+  "globals": {
+    "chrome": false,
+    // grep -E '^(const|function) ' *.js | sed -E 's/.*(const|function) ([[:alpha:]]+).*/"\2": false,/'
+    // run and filter out manually
+    "createState": false,
+    "acrCloudMatcher": false,
+    "captureAudio": false,
+    "defaultOptions": false,
+    "matchers": false,
+    "dom": false,
+    "H": false,
+    "replaceChildren": false,
+    "saveData": false,
+    "arraySetEqual": false,
+    "arraySetUnion": false,
+    "arraySetMinus": false,
+    "createWav": false
+  }
+}

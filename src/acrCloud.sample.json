@@ -1,0 +1,111 @@
+{
+  "status": {
+    "msg": "Success",
+    "code": 0,
+    "version": "1.0"
+  },
+  "metadata": {
+    "music": [
+      {
+        "external_ids": {
+          "isrc": "USEVB5500167",
+          "upc": "4050486929926"
+        },
+        "play_offset_ms": 56200,
+        "external_metadata": {
+          "itunes": {
+            "album": {
+              "id": 977015438
+            },
+            "artists": [
+              {
+                "id": 977015451
+              }
+            ],
+            "track": {
+              "id": 977015460
+            }
+          },
+          "deezer": {
+            "album": {
+              "id": 9953376
+            },
+            "artists": [
+              {
+                "id": 7728570
+              }
+            ],
+            "genres": [
+              {
+                "id": 106
+              },
+              {
+                "id": 111
+              },
+              {
+                "id": 165
+              },
+              {
+                "id": 168
+              }
+            ],
+            "track": {
+              "id": 97756106
+            }
+          },
+          "spotify": {
+            "album": {
+              "id": "6KYZlwPEXXeXQIkXUsxNSl"
+            },
+            "artists": [
+              {
+                "id": "0PfjGJfw27xKQWeBQVan1u"
+              },
+              {
+                "id": "45ZxQxQ0yh2nImE2qpIMgJ"
+              },
+              {
+                "id": "0zjekcL1EdjR3gasQqY4T0"
+              }
+            ],
+            "track": {
+              "id": "3pAYMOjTizMIqaLLG4AEyA"
+            }
+          }
+        },
+        "release_date": "2015-04-03",
+        "album": {
+          "name": "White Isla"
+        },
+        "label": "Is It Balearic..?",
+        "title": "No Light",
+        "duration_ms": "380689",
+        "genres": [
+          {
+            "name": "Electro"
+          },
+          {
+            "name": "Techno/House"
+          },
+          {
+            "name": "R&B/Soul/Funk"
+          },
+          {
+            "name": "Disco"
+          }
+        ],
+        "acrid": "54fc2989b8dab8d619c1a7d5a1964b92",
+        "result_from": 1,
+        "artists": [
+          {
+            "name": "Leo Mas & Fabrice"
+          }
+        ]
+      }
+    ],
+    "timestamp_utc": "2016-08-28 16:27:55"
+  },
+  "result_type": 1
+}
+
+{"status":{"msg":"No result","code":1001,"version":"1.0"}}

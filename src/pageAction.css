@@ -1,0 +1,103 @@
+body {
+  /* parts taken from chome extension option "chrome_style" css */
+  color: rgb(51, 51, 51);
+  font-family: "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-size: 95%;
+  margin: 0px;
+}
+
+.progress {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  animation-name: progress;
+  animation-fill-mode: both;
+  height: 2px;
+}
+
+@keyframes progress {
+  from {width: 0;}
+  to   {width: 150px;}
+  0%   { background: #beb057; }
+  50%  { background: #942384; }
+  100% { background: #05689d; }
+}
+
+.options {
+  margin: 8px 8px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.options .message {
+  margin: 0px 8px 8px 8px;
+  white-space: nowrap;
+}
+
+.options button {
+  width: 100px;
+}
+
+.capturing {
+  width: 150px;
+  height: 25px;
+  text-align: center;
+  margin-top: 6px;
+}
+
+.result {
+  margin: 8px 8px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result .no-matches {
+  margin: 0px 8px 8px 8px;
+  white-space: nowrap;
+}
+
+.result .match {
+  margin: 0px 8px 8px 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.result .match .title {
+  white-space: nowrap;
+}
+
+.result .match .details {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: baseline;
+  padding-top: 3px;
+  font-size: 0.8em;
+  white-space: nowrap;
+}
+
+.result .match .source {
+  font-size: 0.6em;
+  color: #999;
+  padding-right: 6px;
+}
+
+.result .errors {
+  margin: 0px 8px 8px 8px;
+  color: #d66;
+  font-size: 0.8em;
+}
+
+.result .errors .error {
+  white-space: nowrap;
+}
+
+.result button {
+  width: 100px;
+}
+
+iframe {
+  display: none;
+}

@@ -1,0 +1,8 @@
+# https://github.com/wader/inkmake
+../src/icons/icon16.png icon.svg 16x16
+../src/icons/icon19.png icon.svg 19x19
+../src/icons/icon32.png icon.svg 32x32
+../src/icons/icon38.png icon.svg 38x38
+../src/icons/icon48.png icon.svg 48x48
+../src/icons/icon128.png icon.svg 128x128
+../src/icons/iconCapturing38.png icon.svg 38x38 +capturing
