@@ -14,6 +14,15 @@ audio recognition services. Currently the only supported service is
 [ACRCloud](https://www.acrcloud.com]) (requires an account but there is a
 free plan).
 
+## Known issues
+
+##### Spotify link does not work
+Try to enable the "Remember my choice for all links of this type" in the
+launch application dialog.
+
+##### ACRCloud complaints that it can't generate fingerprint
+Try to increse capture durtion in options. It should at least by 10 seconds.
+
 ## Help wanted
 - Improve interaction and graphical design
 - Write more matchers. Currently ACRCloud seems to be the only recognition
