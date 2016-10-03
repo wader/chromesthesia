@@ -16,12 +16,18 @@ const initialState = {
   usedInTabIds: []
 };
 
+function validMatchersForOptions(options) {
+  return matchers.filter(m => m.validOptions(options[m.name]) && m);
+}
+
 function reduce(state, action) {
   if (action.nop !== undefined) {
     // used to trigger update call to send current state
     return state;
   } else if (action.openPageAction !== undefined) {
-    if (state.capture.state === 'idle' || state.capture.state === 'options') {
+    if (validMatchersForOptions(state.options).length === 0) {
+      return Object.assign({}, state, {capture: {state: 'options'}});
+    } else if (state.capture.state === 'idle' || state.capture.state === 'options') {
       return Object.assign({}, state, {
         capture: {
           state: 'capturing',
@@ -89,14 +95,16 @@ function update(oldState, newState) {
     }
   }
 
+  let oldHasValidMatches = validMatchersForOptions(oldState.options).length > 0;
   let oldPageActionVisibleIds;
-  if (oldState.options.showForAllTabs) {
+  if (!oldHasValidMatches || oldState.options.showForAllTabs) {
     oldPageActionVisibleIds = oldState.allTabIds;
   } else {
     oldPageActionVisibleIds = arraySetUnion(oldState.audibleTabIds, oldState.usedInTabIds);
   }
+  let newHasValidMatches = validMatchersForOptions(newState.options).length > 0;
   let newPageActionVisibleIds;
-  if (newState.options.showForAllTabs) {
+  if (!newHasValidMatches || newState.options.showForAllTabs) {
     newPageActionVisibleIds = newState.allTabIds;
   } else {
     newPageActionVisibleIds = arraySetUnion(newState.audibleTabIds, newState.usedInTabIds);
@@ -137,7 +145,7 @@ const stateTransition = createState(
 );
 
 function captureAndMatch(options) {
-  let validMatchers = matchers.filter(m => m.validOptions(options[m.name]) && m);
+  let validMatchers = validMatchersForOptions(options);
   if (validMatchers.length === 0) {
     stateTransition({needOptions: true});
     return;
