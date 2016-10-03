@@ -13,7 +13,7 @@
 function matcherInputsToOptions() {
   return matchers.reduce((acc, m) => {
     acc[m.name] = m.options.reduce((acc, o) => {
-      acc[o.name] = document.getElementsByName(`${m.name}_${o.name}`)[0].value;
+      acc[o.name] = document.getElementsByName(`${m.name}_${o.name}`)[0].value.trim();
       return acc;
     }, {});
     return acc;
