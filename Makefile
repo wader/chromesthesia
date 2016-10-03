@@ -2,7 +2,7 @@ lint:
 	eslint -c src/.eslintrc.json src/*.js
 
 zip:
-	(cd src && zip -r ../chromesthesia.zip .)
+	git archive -o chromesthesia.zip master:src
 
 crx:
 	# gem install crxmake
