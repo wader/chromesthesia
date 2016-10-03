@@ -58,8 +58,10 @@ function reduce(state, action) {
     let n = arraySetUnion(state.allTabIds, action.createTabs);
     return Object.assign({}, state, {allTabIds: n});
   } else if (action.removeTabs !== undefined) {
-    let n = arraySetMinus(state.allTabIds, action.removeTabs);
-    return Object.assign({}, state, {allTabIds: n});
+    return Object.assign({}, state, {
+      allTabIds: arraySetMinus(state.allTabIds, action.removeTabs),
+      audibleTabIds: arraySetMinus(state.audibleTabIds, action.removeTabs)
+    });
   } else if (action.changeTabIsAudible !== undefined) {
     let n = Array.from(state.audibleTabIds);
     if (action.changeTabIsAudible.audible) {
@@ -187,6 +189,11 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     // also it seems like pageAction.show can't be used until complete status
     stateTransition({removeTabs: [tab.id]});
     stateTransition({createTabs: [tab.id]});
+    chrome.tabs.get(tab.id, tab => {
+      if (!chrome.runtime.lastError) {
+        stateTransition({changeTabIsAudible: {tabId: tab.id, audible: tab.audible}});
+      }
+    });
   }
 });
 
