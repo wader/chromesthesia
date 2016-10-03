@@ -21,7 +21,7 @@ Try to enable the "Remember my choice for all links of this type" in the
 launch application dialog.
 
 ##### ACRCloud complaints that it can't generate fingerprint
-Try to increse capture durtion in options. It should at least by 10 seconds.
+Try to increase capture duration in options. It should be at least 10 seconds.
 
 ## Help wanted
 - Improve interaction and graphical design
