@@ -53,7 +53,7 @@ const captureAudio = (() => {
         let sampleRate = context.sampleRate;
         let audioInput = context.createMediaStreamSource(stream);
 
-        const bufferSize = 16384;
+        const bufferSize = 2048;
         const channels = 2;
         let recorder = context.createScriptProcessor(bufferSize, channels, channels);
 
