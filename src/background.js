@@ -80,33 +80,46 @@ function reduce(state, action) {
 }
 
 function update(oldState, newState) {
-  if (oldState.capture.state !== 'capturing' && newState.capture.state === 'capturing') {
+  let oldIsCapturing = oldState.capture.state == 'capturing';
+  let newIsCapturing = newState.capture.state == 'capturing';
+
+  if (!oldIsCapturing && newIsCapturing) {
     // TODO: fix nested stateTransition, defer somehow?
     setTimeout(() => captureAndMatch(newState.options));
 
-    chrome.pageAction.setIcon({
-      tabId: newState.capture.tabId,
-      path: 'icons/iconCapturing38.png'
-    });
-  } else if (oldState.capture.state === 'capturing' && newState.capture.state !== 'capturing') {
-    if (newState.allTabIds.indexOf(oldState.capture.tabId) !== -1) {
-      chrome.pageAction.setIcon({
-        tabId: oldState.capture.tabId,
-        path: 'icons/icon38.png'
+    newState.allTabIds.forEach(tabId => {
+      chrome.tabs.get(tabId, () => {
+        if (!chrome.runtime.lastError) {
+          chrome.pageAction.setIcon({
+            tabId: tabId,
+            path: 'icons/iconCapturing38.png'
+          });
+        }
       });
-    }
+    });
+  } else if (oldIsCapturing && !newIsCapturing) {
+    newState.allTabIds.forEach(tabId => {
+      chrome.tabs.get(tabId, () => {
+        if (!chrome.runtime.lastError) {
+          chrome.pageAction.setIcon({
+            tabId: tabId,
+            path: 'icons/icon38.png'
+          });
+        }
+      });
+    });
   }
 
   let oldHasValidMatches = validMatchersForOptions(oldState.options).length > 0;
   let oldPageActionVisibleIds;
-  if (!oldHasValidMatches || oldState.options.showForAllTabs) {
+  if (oldIsCapturing || !oldHasValidMatches || oldState.options.showForAllTabs) {
     oldPageActionVisibleIds = oldState.allTabIds;
   } else {
     oldPageActionVisibleIds = arraySetUnion(oldState.audibleTabIds, oldState.usedInTabIds);
   }
   let newHasValidMatches = validMatchersForOptions(newState.options).length > 0;
   let newPageActionVisibleIds;
-  if (!newHasValidMatches || newState.options.showForAllTabs) {
+  if (newIsCapturing || !newHasValidMatches || newState.options.showForAllTabs) {
     newPageActionVisibleIds = newState.allTabIds;
   } else {
     newPageActionVisibleIds = arraySetUnion(newState.audibleTabIds, newState.usedInTabIds);
@@ -130,6 +143,10 @@ function update(oldState, newState) {
       chrome.tabs.get(tabId, () => {
         if (!chrome.runtime.lastError) {
           chrome.pageAction.show(tabId);
+          chrome.pageAction.setIcon({
+            tabId: tabId,
+            path: newIsCapturing ? 'icons/iconCapturing38.png' : 'icons/icon38.png'
+          });
         }
       });
     });
