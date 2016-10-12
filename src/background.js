@@ -21,62 +21,51 @@ function validMatchersForOptions(options) {
 }
 
 function reduce(state, action) {
-  if (action.nop !== undefined) {
-    // used to trigger update call to send current state
-    return state;
-  } else if (action.openPageAction !== undefined) {
-    if (validMatchersForOptions(state.options).length === 0) {
-      return Object.assign({}, state, {capture: {state: 'options'}});
-    } else if (state.capture.state === 'idle' || state.capture.state === 'options') {
-      return Object.assign({}, state, {
-        capture: {
-          state: 'capturing',
-          tabId: action.openPageAction.tabId,
-          start: Date.now()
-        },
-        usedInTabIds: arraySetUnion(state.usedInTabIds, [action.openPageAction.tabId])
-      });
-    } else {
-      return state;
-    }
-  } else if (action.startCapture !== undefined) {
-    return Object.assign({}, state, {
-      capture: {
+  return reduceProps(state, action, {
+    options: {
+      changeOptions: (propState, propAction) => Object.assign({}, propState, propAction)
+    },
+    capture: {
+      openPageAction: (propState, _propAction) => {
+        if (validMatchersForOptions(state.options).length === 0) {
+          return {state: 'options'};
+        } else if (propState.state === 'idle' || propState.state === 'options') {
+          return {
+            state: 'capturing',
+            tabId: action.openPageAction.tabId,
+            start: Date.now()
+          };
+        } else {
+          return propState;
+        }
+      },
+      startCapture: (_propState, _propAction) => ({
         state: 'capturing',
         tabId: action.startCapture.tabId,
         start: Date.now()
-      },
-      usedInTabIds: arraySetUnion(state.usedInTabIds, [action.startCapture.tabId])
-    });
-  } else if (action.needOptions !== undefined) {
-    return Object.assign({}, state, {capture: {state: 'options'}});
-  } else if (action.captureResult !== undefined) {
-    return Object.assign({}, state, {
-      capture: Object.assign({}, {state: 'result'}, action.captureResult)
-    });
-  } else if (action.createTabs !== undefined) {
-    let n = arraySetUnion(state.allTabIds, action.createTabs);
-    return Object.assign({}, state, {allTabIds: n});
-  } else if (action.removeTabs !== undefined) {
-    return Object.assign({}, state, {
-      allTabIds: arraySetMinus(state.allTabIds, action.removeTabs),
-      audibleTabIds: arraySetMinus(state.audibleTabIds, action.removeTabs)
-    });
-  } else if (action.changeTabIsAudible !== undefined) {
-    let n = Array.from(state.audibleTabIds);
-    if (action.changeTabIsAudible.audible) {
-      n = arraySetUnion(n, [action.changeTabIsAudible.tabId]);
-    } else {
-      n = arraySetMinus(n, [action.changeTabIsAudible.tabId]);
+      }),
+      captureResult: (propState, propAction) => Object.assign({}, {state: 'result'}, propAction)
+    },
+    allTabIds: {
+      createTabs: (propState, propAction) => arraySetUnion(propState, propAction),
+      removeTabs: (propState, propAction) => arraySetMinus(propState, propAction)
+    },
+    audibleTabIds: {
+      removeTabs: (propState, propAction) => arraySetMinus(propState, propAction),
+      changeTabIsAudible: (propState, propAction) => {
+        let n = Array.from(propState);
+        if (propAction.audible) {
+          return arraySetUnion(n, [propAction.tabId]);
+        } else {
+          return arraySetMinus(n, [propAction.tabId]);
+        }
+      }
+    },
+    usedInTabIds: {
+      openPageAction: (propState, propAction) => arraySetUnion(propState, [propAction.tabId]),
+      removeTabs: (propState, propAction) => arraySetMinus(propState, propAction)
     }
-    return Object.assign({}, state, {audibleTabIds: n});
-  } else if (action.changeOptions !== undefined) {
-    return Object.assign({}, state, {
-      options: Object.assign({}, state.options, action.changeOptions)
-    });
-  } else {
-    throw('unknown action ' + action);
-  }
+  });
 }
 
 function update(oldState, newState, defer) {

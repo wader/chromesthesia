@@ -35,6 +35,7 @@
     // grep -E '^(const|function) ' *.js | sed -E 's/.*(const|function) ([[:alpha:]]+).*/"\2": false,/'
     // run and filter out manually
     "createState": false,
+    "reduceProps": false,
     "acrCloudMatcher": false,
     "captureAudio": false,
     "defaultOptions": false,

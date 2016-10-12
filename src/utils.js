@@ -27,6 +27,46 @@ function createState(initialState, reduce, update) {
 
   return transition;
 }
+
+// reduce using an object mapping properties to an object mapping actions
+// to reduce function properties
+// {
+//   propName: {
+//     actionName: (propState, propAction) => ...
+//   }
+// }
+// ex:
+// state {count: 1}
+// reduce map object: {
+//   count: {
+//     add: (propState, propAction) => propState + propAction
+//   }
+// }
+// given action {add: 2}
+// new state would be {count: 3}
+function reduceProps(state, action, props) {
+  let n = Object.assign({}, state);
+
+  for (let p in props) {
+    if (!props.hasOwnProperty(p)) {
+      continue;
+    }
+
+    for (let a in action) {
+      if (!action.hasOwnProperty(a)) {
+        continue;
+      }
+
+      let fn = props[p][a];
+      if (!fn) {
+        continue;
+      }
+
+      n[p] = fn(n[p], action[a]);
+    }
+  }
+
+  return n;
 }
 
 function dom() {
