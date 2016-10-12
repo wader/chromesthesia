@@ -79,13 +79,12 @@ function reduce(state, action) {
   }
 }
 
-function update(oldState, newState) {
+function update(oldState, newState, defer) {
   let oldIsCapturing = oldState.capture.state == 'capturing';
   let newIsCapturing = newState.capture.state == 'capturing';
 
   if (!oldIsCapturing && newIsCapturing) {
-    // TODO: fix nested stateTransition, defer somehow?
-    setTimeout(() => captureAndMatch(newState.options));
+    defer(() => captureAndMatch(newState.options));
 
     newState.allTabIds.forEach(tabId => {
       chrome.tabs.get(tabId, () => {
@@ -160,7 +159,7 @@ const stateTransition = createState(
   reduce,
   update
   // (state, action) => {console.log('reduce', action); return reduce(state, action);},
-  // (oldState, newState) => {console.log('update', oldState, newState); update(oldState, newState);}
+  // (oldState, newState, defer) => {console.log('update', oldState, newState); update(oldState, newState, defer);}
 );
 
 function captureAndMatch(options) {

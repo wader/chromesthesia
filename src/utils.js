@@ -1,12 +1,32 @@
 'use strict';
 
+// creates a new state transition function
+// reduce(state, action) -> state
+//   use action to get to a new state
+// update(oldState, newState, defer) -> void
+//   perform ui updates etc
+//   use defer(fn) to run code that might trigger state transitions
 function createState(initialState, reduce, update) {
   let currentState = initialState;
-  return action => {
+  let defers = [];
+
+  let defer = fn => {
+    defers.push(fn);
+  };
+
+  let transition = action => {
     let oldState = currentState;
     currentState = reduce(currentState, action);
-    update(oldState, currentState);
+    update(oldState, currentState, defer);
+    if (defers.length > 0) {
+      let oldDefers = defers;
+      defers = [];
+      oldDefers.forEach(fn => fn());
+    }
   };
+
+  return transition;
+}
 }
 
 function dom() {
