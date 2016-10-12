@@ -69,6 +69,13 @@ function reduceProps(state, action, props) {
   return n;
 }
 
+// dom('a') -> <a/>
+// dom('a', 'text') -> <a>text</a>
+// dom('a', {href: 'url'}, 'text') -> <a href="url">text</a>
+// dom('button', {click: (e) => { ... }}, ...) -> <button> with click event handler
+// dom('a', dom('b') -> <a><b></a>
+// dom('span', [['nested'], 'arrays', dom('b')]) -> <span>nested arrays <b></span>
+// undefined and null are ignored
 function dom() {
   let elm = document.createElement(arguments[0]);
 
@@ -148,6 +155,7 @@ function saveData(data, fileName) {
   window.URL.revokeObjectURL(url);
 }
 
+// compare two arrays as sets
 function arraySetEqual(a, b) {
   let as = new Set(a);
   let bs = new Set(b);
@@ -162,7 +170,7 @@ function arraySetEqual(a, b) {
   return true;
 }
 
-// union of all
+// union of all array sets
 function arraySetUnion() {
   let n = new Set();
   for (let i = 0; i < arguments.length; i++) {
@@ -173,7 +181,7 @@ function arraySetUnion() {
   return Array.from(n);
 }
 
-// first minus all other
+// first set minus all other sets
 function arraySetMinus() {
   let n = new Set(arguments[0]);
   for (let i = 1; i < arguments.length; i++) {
