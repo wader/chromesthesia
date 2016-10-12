@@ -9,7 +9,7 @@ const initialState = {
     showForAllTabs: defaultOptions.showForAllTabs
   },
   capture: {
-    state: 'idle'
+    status: 'idle'
   },
   allTabIds: [],
   audibleTabIds: [],
@@ -28,10 +28,10 @@ function reduce(state, action) {
     capture: {
       openPageAction: (propState, _propAction) => {
         if (validMatchersForOptions(state.options).length === 0) {
-          return {state: 'options'};
-        } else if (propState.state === 'idle' || propState.state === 'options') {
+          return {status: 'options'};
+        } else if (propState.status === 'idle' || propState.status === 'options') {
           return {
-            state: 'capturing',
+            status: 'capturing',
             tabId: action.openPageAction.tabId,
             start: Date.now()
           };
@@ -40,11 +40,11 @@ function reduce(state, action) {
         }
       },
       startCapture: (_propState, _propAction) => ({
-        state: 'capturing',
+        status: 'capturing',
         tabId: action.startCapture.tabId,
         start: Date.now()
       }),
-      captureResult: (propState, propAction) => Object.assign({}, {state: 'result'}, propAction)
+      captureResult: (propState, propAction) => Object.assign({}, {status: 'result'}, propAction)
     },
     allTabIds: {
       createTabs: (propState, propAction) => arraySetUnion(propState, propAction),
@@ -69,8 +69,8 @@ function reduce(state, action) {
 }
 
 function update(oldState, newState, defer) {
-  let oldIsCapturing = oldState.capture.state == 'capturing';
-  let newIsCapturing = newState.capture.state == 'capturing';
+  let oldIsCapturing = oldState.capture.status == 'capturing';
+  let newIsCapturing = newState.capture.status == 'capturing';
 
   if (!oldIsCapturing && newIsCapturing) {
     defer(() => captureAndMatch(newState.options));

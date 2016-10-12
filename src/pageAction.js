@@ -3,7 +3,7 @@
 const requestDurationGuess = 1.5;
 
 function buildDOM(state) {
-  if (state.capture.state === 'options') {
+  if (state.capture.status === 'options') {
     return H.div({'class': 'options'}, [
       H.span({'class': 'message'}, 'Some configuration is needed'),
       H.button('Open options', {click: (e) => {
@@ -11,7 +11,7 @@ function buildDOM(state) {
         chrome.runtime.openOptionsPage();
       }})
     ]);
-  } else if (state.capture.state === 'capturing') {
+  } else if (state.capture.status === 'capturing') {
     return H.div(
       {'class': 'capturing'},
       [
@@ -26,7 +26,7 @@ function buildDOM(state) {
         })
       ]
     );
-  } else if (state.capture.state === 'result') {
+  } else if (state.capture.status === 'result') {
     let matches = state.capture.matches;
     let totalMatches = matches.reduce((c, m) => c+m.matches.length, 0);
     let matchesDOM;
