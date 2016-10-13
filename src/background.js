@@ -51,15 +51,8 @@ function reduce(state, action) {
       removeTabs: (propState, propAction) => arraySetMinus(propState, propAction)
     },
     audibleTabIds: {
-      removeTabs: (propState, propAction) => arraySetMinus(propState, propAction),
-      changeTabIsAudible: (propState, propAction) => {
-        let n = Array.from(propState);
-        if (propAction.audible) {
-          return arraySetUnion(n, [propAction.tabId]);
-        } else {
-          return arraySetMinus(n, [propAction.tabId]);
-        }
-      }
+      addAudibleTabs: (propState, propAction) => arraySetUnion(propState, propAction),
+      removeAudibleTabs: (propState, propAction) => arraySetMinus(propState, propAction)
     },
     usedInTabIds: {
       openPageAction: (propState, propAction) => arraySetUnion(propState, [propAction.tabId]),
@@ -186,7 +179,11 @@ chrome.runtime.onMessage.addListener((request, _sender, _response) => {
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.audible !== undefined) {
-    stateTransition({changeTabIsAudible: {tabId: tab.id, audible: tab.audible}});
+    if (tab.audible) {
+      stateTransition({addAudibleTabs: [tab.id]});
+    } else {
+      stateTransition({removeAudibleTabs: [tab.id]});
+    }
   }
 
   if (changeInfo.status === 'complete') {
@@ -196,7 +193,11 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     stateTransition({createTabs: [tab.id]});
     chrome.tabs.get(tab.id, tab => {
       if (!chrome.runtime.lastError) {
-        stateTransition({changeTabIsAudible: {tabId: tab.id, audible: tab.audible}});
+        if (tab.audible) {
+          stateTransition({addAudibleTabs: [tab.id]});
+        } else {
+          stateTransition({removeAudibleTabs: [tab.id]});
+        }
       }
     });
   }
@@ -211,7 +212,7 @@ chrome.tabs.query({}, tabs => {
 });
 
 chrome.tabs.query({audible: true}, tabs => {
-  tabs.forEach(t => stateTransition({changeTabIsAudible: {tabId: t.id, audible: t.audible}}));
+  stateTransition({addAudibleTabs: tabs.map(tab => tab.id)});
 });
 
 chrome.storage.sync.get(null, items => {
