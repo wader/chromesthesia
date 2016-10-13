@@ -18,11 +18,9 @@ function createState(initialState, reduce, update) {
     let oldState = currentState;
     currentState = reduce(currentState, action);
     update(oldState, currentState, defer);
-    if (defers.length > 0) {
-      let oldDefers = defers;
-      defers = [];
-      oldDefers.forEach(fn => fn());
-    }
+    let oldDefers = defers;
+    defers = [];
+    oldDefers.forEach(fn => fn());
   };
 
   return transition;
