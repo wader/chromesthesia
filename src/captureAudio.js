@@ -10,7 +10,7 @@
 //   Int16Array[32767, -32767, 16383, ...], // channel 1 int16 buffer
 //   ...
 // ]
-function flattenChannelBuffersToSign16(floatArrays) {
+function flattenChannelBuffersToInt16(floatArrays) {
   let samples = floatArrays[0].reduce((v, b) => v+b.length, 0);
   let int16Arrays = [];
 
@@ -78,7 +78,7 @@ const captureAudio = (() => {
           context.close();
           resolve({
             sampleRate: sampleRate,
-            channels: flattenChannelBuffersToSign16(channelBuffers)
+            channels: flattenChannelBuffersToInt16(channelBuffers)
           });
         }, captureDuration);
       });
