@@ -30,20 +30,12 @@ function reduce(state, action) {
         if (validMatchersForOptions(state.options).length === 0) {
           return {status: 'options'};
         } else if (propState.status === 'idle' || propState.status === 'options') {
-          return {
-            status: 'capturing',
-            tabId: action.openPageAction.tabId,
-            start: Date.now()
-          };
+          return {status: 'capturing', start: Date.now()};
         } else {
           return propState;
         }
       },
-      startCapture: (_propState, _propAction) => ({
-        status: 'capturing',
-        tabId: action.startCapture.tabId,
-        start: Date.now()
-      }),
+      startCapture: (_propState, _propAction) => ({status: 'capturing', start: Date.now()}),
       captureResult: (propState, propAction) => Object.assign({status: 'result'}, propAction)
     },
     allTabIds: {

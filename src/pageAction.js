@@ -66,12 +66,9 @@ function buildDOM(state) {
     return H.div({'class': 'result'}, [
       matchesDOM,
       errorsDOM,
-      state.capture.matches.errors ? H.div('there are errors') : null,
       H.button('Try again', {click: (e) => {
         e.preventDefault();
-        chrome.tabs.query({active: true, currentWindow: true}, tabs => {
-          chrome.runtime.sendMessage({action: {startCapture: {tabId: tabs[0].id}}});
-        });
+        chrome.runtime.sendMessage({action: {startCapture: true}});
       }})
     ]);
   }
