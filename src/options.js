@@ -51,10 +51,14 @@ function buildDOM(state) {
         H.label('Capture duration'),
         H.input({
           type: 'text',
-          value: (state.options && state.options.captureDuration) || defaultOptions.captureDuration,
+          value: state.options.captureDuration,
           placeholder: 'Duration in seconds',
           input: (e) => {
-            chrome.storage.sync.set({captureDuration: parseInt(e.target.value, 10)});
+            let d = parseInt(e.target.value, 10);
+            if (d <= 0) {
+              d = defaultOptions.captureDuration;
+            }
+            chrome.storage.sync.set({captureDuration: d});
           }
         })
       ]),
@@ -65,7 +69,7 @@ function buildDOM(state) {
           click: (e) => {
             chrome.storage.sync.set({showForAllTabs: e.target.checked});
           }
-        }, ((state.options && state.options.showForAllTabs) || defaultOptions.showForAllTabs) ? {checked: true} : {}))
+        }, state.options.showForAllTabs ? {checked: true} : {}))
       ])
     )])
   ]);
