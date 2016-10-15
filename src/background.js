@@ -128,7 +128,7 @@ function update(oldState, newState, defer) {
   chrome.runtime.sendMessage({state: newState});
 }
 
-const stateTransition = createState(
+const stateAction = createState(
   initialState,
   reduce,
   update
@@ -139,7 +139,7 @@ const stateTransition = createState(
 function captureAndMatch(options) {
   let validMatchers = validMatchersForOptions(options);
   if (validMatchers.length === 0) {
-    stateTransition({needOptions: true});
+    stateAction({needOptions: true});
     return;
   }
 
@@ -156,7 +156,7 @@ function captureAndMatch(options) {
     }));
   })
   .then(r => {
-    stateTransition({captureResult: {
+    stateAction({captureResult: {
       errors: r.filter(m => m.error),
       matches: r.filter(m => m.matches)
     }});
@@ -165,30 +165,30 @@ function captureAndMatch(options) {
 
 chrome.runtime.onMessage.addListener((request, _sender, _response) => {
   if (request.action) {
-    stateTransition(request.action);
+    stateAction(request.action);
   }
 });
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.audible !== undefined) {
     if (tab.audible) {
-      stateTransition({addAudibleTabs: [tab.id]});
+      stateAction({addAudibleTabs: [tab.id]});
     } else {
-      stateTransition({removeAudibleTabs: [tab.id]});
+      stateAction({removeAudibleTabs: [tab.id]});
     }
   }
 
   if (changeInfo.status === 'complete') {
     // this will take care of created tabs and reloaded tabs
     // also it seems like pageAction.show can't be used until complete status
-    stateTransition({removeTabs: [tab.id]});
-    stateTransition({createTabs: [tab.id]});
+    stateAction({removeTabs: [tab.id]});
+    stateAction({createTabs: [tab.id]});
     chrome.tabs.get(tab.id, tab => {
       if (!chrome.runtime.lastError) {
         if (tab.audible) {
-          stateTransition({addAudibleTabs: [tab.id]});
+          stateAction({addAudibleTabs: [tab.id]});
         } else {
-          stateTransition({removeAudibleTabs: [tab.id]});
+          stateAction({removeAudibleTabs: [tab.id]});
         }
       }
     });
@@ -196,19 +196,19 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 });
 
 chrome.tabs.onRemoved.addListener((tabId, _removeInfo) => {
-  stateTransition({removeTabs: [tabId]});
+  stateAction({removeTabs: [tabId]});
 });
 
 chrome.tabs.query({}, tabs => {
-  stateTransition({createTabs: tabs.map(tab => tab.id)});
+  stateAction({createTabs: tabs.map(tab => tab.id)});
 });
 
 chrome.tabs.query({audible: true}, tabs => {
-  stateTransition({addAudibleTabs: tabs.map(tab => tab.id)});
+  stateAction({addAudibleTabs: tabs.map(tab => tab.id)});
 });
 
 chrome.storage.sync.get(null, items => {
-  stateTransition({changeOptions: items});
+  stateAction({changeOptions: items});
 });
 
 chrome.storage.onChanged.addListener((changes, areaName) => {
@@ -221,5 +221,5 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
     return acc;
   }, {});
 
-  stateTransition({changeOptions: newValues});
+  stateAction({changeOptions: newValues});
 });
