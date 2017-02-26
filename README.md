@@ -3,7 +3,8 @@ Find out what song is playing in a Chrome tab.
 
 ![](assets/demo.gif)
 
-Once you play something the Chromesthesia should appear.
+Once you play something the Chromesthesia icon should appear. In newer versions of
+Chrome the icon might always be visible but grayed out when inactive.
 
 The extension is available in chrome web store at:  
 https://chrome.google.com/webstore/detail/chromesthesia/gocpionhjoififoliaelkfheedcafgin
