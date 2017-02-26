@@ -19,7 +19,9 @@
   "background": {
     "scripts": [
       "defaultOptions.js",
-      "utils.js",
+      "arraySet.js",
+      "state.js",
+      "dom.js",
       "wav.js",
       "captureAudio.js",
       "acrCloud.js",

@@ -1,5 +1,18 @@
 'use strict';
 
+function reloadOnChange() {
+  let ws = new WebSocket('ws://127.0.0.1:8000/.devd.livereload');
+  ws.onmessage = () => {
+    // reload current tab with some delay
+    // require permissions in manifest
+    // chrome.tabs.executeScript(null, {
+    //   code: 'setTimeout(function() { document.location.reload(); }, 200);'
+    // });
+
+    // reload extension
+    chrome.runtime.reload();
+  };
+}
 // reloadOnChange();
 
 // uses only JSON friendly types so that sendMessage works
