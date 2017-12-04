@@ -40,8 +40,8 @@ function dom() {
         let v = arg[p];
         if (typeof(v) === 'function') {
           elm.addEventListener(p, v);
-        } else {
-          elm.setAttribute(p, arg[p]);
+        } else if (v !== undefined && v !== null) {
+          elm.setAttribute(p, v);
         }
       });
     } else if (arg === undefined || arg === null) {
