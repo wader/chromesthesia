@@ -147,16 +147,19 @@ const acrCloudMatcher = (() => {
       {
         name: 'host',
         title: 'Host',
+        required: true,
         placeholder: 'e.g: eu-west-1.api.acrcloud.com'
       },
       {
         name: 'accessKey',
         title: 'Access key',
+        required: true,
         placeholder: '32 characters'
       },
       {
         name: 'accessSecret',
         title: 'Access secret',
+        required: true,
         placeholder: '40 characters'
       }
     ],

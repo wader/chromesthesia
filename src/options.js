@@ -22,7 +22,6 @@ function matcherInputsToOptions() {
 
 function buildDOM(state) {
   return H.div([
-
     H.div(state.matchers.map(m => {
       return H.div({'class': 'section'}, [
         H.div({'class': 'name'}, m.title),
@@ -33,6 +32,7 @@ function buildDOM(state) {
               type: 'text',
               name: `${m.name}_${o.name}`,
               value: (state.options && state.options[m.name] && state.options[m.name][o.name]) || '',
+              required: o.required ? true : null,
               placeholder: o.placeholder,
               input: () => {
                 chrome.storage.sync.set(matcherInputsToOptions());
