@@ -48,7 +48,7 @@ function buildDOM(state) {
       H.div({'class': 'name'}, 'Options'),
       H.div({'class': 'options'},
       H.div({'class': 'option'}, [
-        H.label('Capture duration'),
+        H.label('Listen duration'),
         H.input({
           type: 'text',
           value: state.options.captureDuration,

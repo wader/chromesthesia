@@ -15,7 +15,7 @@ function buildDOM(state) {
     return H.div(
       {'class': 'capturing'},
       [
-        'Capturing',
+        'Listening...',
         H.div({
           'class': 'progress',
           'style': (
@@ -66,7 +66,7 @@ function buildDOM(state) {
     return H.div({'class': 'result'}, [
       matchesDOM,
       errorsDOM,
-      H.button('Try again', {click: (e) => {
+      H.button('Listen again', {click: (e) => {
         e.preventDefault();
         chrome.runtime.sendMessage({action: {startCapture: true}});
       }})
