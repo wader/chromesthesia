@@ -46,7 +46,7 @@ const captureAudio = (() => {
         if (!audio) {
           audio = document.createElement('audio');
         }
-        audio.src = window.URL.createObjectURL(stream);
+        audio.srcObject = stream;
         audio.play();
 
         let context = new AudioContext();
