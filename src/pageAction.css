@@ -59,6 +59,7 @@ body {
 }
 
 .result .match {
+  width: 100%;
   margin: 0px 8px 8px 8px;
   display: flex;
   flex-direction: column;
@@ -76,6 +77,10 @@ body {
   padding-top: 3px;
   font-size: 0.8em;
   white-space: nowrap;
+}
+
+.result .match .details a {
+  padding-right: 5px;
 }
 
 .result .match .source {
