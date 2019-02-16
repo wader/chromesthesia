@@ -1,7 +1,8 @@
 'use strict';
 
 const matchers = [
-  acrCloudMatcher
+  acrCloudMatcher,
+  audDMatcher,
   // ,
   // dummySuccessMatcher,
   // dummySuccessMatcher,

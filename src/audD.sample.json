@@ -1,0 +1,72 @@
+{
+    "status": "error",
+    "error": {
+        "error_code": 300,
+        "error_message": "Recognition failed: a problem with fingerprints creating.",
+        "request_params": [
+            {
+                "key": "audio_format",
+                "value": "wav"
+            },
+            {
+                "key": "method",
+                "value": "recognize"
+            }
+        ]
+    },
+    "see the documentation": "https:\/\/api.audd.io\/doc",
+    "contact us": [
+        "https:\/\/vk.me\/auddmusic",
+        "mailto:api@audd.io"
+    ]
+}
+
+{
+    "status": "success",
+    "result": null
+}
+
+{
+    "status": "success",
+    "result": {
+        "artist": "Imagine Dragons",
+        "title": "Warriors",
+        "album": "Warriors",
+        "release_date": "2014-09-18",
+        "label": "Universal Music",
+        "underground": false,
+        "itunes": {
+            "wrapperType": "track",
+            "kind": "song",
+            "artistId": 358714030,
+            "collectionId": 1043732083,
+            "trackId": 1043732102,
+            "artistName": "Imagine Dragons",
+            "collectionName": "Smoke + Mirrors (Deluxe)",
+            "trackName": "Warriors",
+            "collectionCensoredName": "Smoke + Mirrors (Deluxe)",
+            "trackCensoredName": "Warriors",
+            "artistViewUrl": "https:\/\/itunes.apple.com\/us\/artist\/imagine-dragons\/358714030?uo=4",
+            "collectionViewUrl": "https:\/\/itunes.apple.com\/us\/album\/warriors\/1043732083?i=1043732102&uo=4",
+            "trackViewUrl": "https:\/\/itunes.apple.com\/us\/album\/warriors\/1043732083?i=1043732102&uo=4",
+            "previewUrl": "https:\/\/audio-ssl.itunes.apple.com\/apple-assets-us-std-000001\/Music3\/v4\/71\/eb\/3d\/71eb3d80-78bc-55ef-2fd3-4b7c30d90765\/mzaf_6715849709106549200.plus.aac.p.m4a",
+            "artworkUrl30": "https:\/\/is4-ssl.mzstatic.com\/image\/thumb\/Music62\/v4\/f5\/8d\/2f\/f58d2fc8-ef23-ec96-3886-18d06e65ae6b\/source\/30x30bb.jpg",
+            "artworkUrl60": "https:\/\/is4-ssl.mzstatic.com\/image\/thumb\/Music62\/v4\/f5\/8d\/2f\/f58d2fc8-ef23-ec96-3886-18d06e65ae6b\/source\/60x60bb.jpg",
+            "artworkUrl100": "https:\/\/is4-ssl.mzstatic.com\/image\/thumb\/Music62\/v4\/f5\/8d\/2f\/f58d2fc8-ef23-ec96-3886-18d06e65ae6b\/source\/100x100bb.jpg",
+            "collectionPrice": 11.99,
+            "trackPrice": 1.29,
+            "releaseDate": "2014-09-18T07:00:00Z",
+            "collectionExplicitness": "notExplicit",
+            "trackExplicitness": "notExplicit",
+            "discCount": 1,
+            "discNumber": 1,
+            "trackCount": 21,
+            "trackNumber": 18,
+            "trackTimeMillis": 170799,
+            "country": "USA",
+            "currency": "USD",
+            "primaryGenreName": "Alternative",
+            "isStreamable": true
+        }
+    }
+}

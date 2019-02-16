@@ -14,7 +14,8 @@
     "storage",
     "tabCapture",
     "http://*.acrcloud.com/",
-    "https://*.acrcloud.com/"
+    "https://*.acrcloud.com/",
+    "https://api.audd.io/"
   ],
   "background": {
     "scripts": [
@@ -22,9 +23,11 @@
       "arraySet.js",
       "state.js",
       "dom.js",
+      "libshine.js",
       "wav.js",
       "captureAudio.js",
       "acrCloud.js",
+      "audD.js",
       "dummyMatch.js",
       "matchers.js",
       "background.js"

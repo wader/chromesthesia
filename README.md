@@ -11,9 +11,10 @@ https://chrome.google.com/webstore/detail/chromesthesia/gocpionhjoififoliaelkfhe
 
 ## How does it work?
 It's a Chrome extension that captures the audio playing in a tab and sends it to
-audio recognition services. Currently the only supported service is
-[ACRCloud](https://www.acrcloud.com]) (requires an account but there is a
-free plan).
+audio recognition services. Currently two services are supported:  
+[audD](https://audd.io) - No account required. 10 requests free per day  
+[ACRCloud](https://www.acrcloud.com) - Requires an account but there is a
+free plan.
 
 ## Known issues
 

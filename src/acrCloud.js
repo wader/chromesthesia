@@ -57,12 +57,11 @@ const acrCloudMatcher = (() => {
   function sendRequest(context) {
     let hmacBase64 = btoa(arrayBufferToString(context.signature.hmacBuffer));
 
-    let blob = new Blob([context.wavBuffer]);
     let form = new FormData();
     form.append('access_key', context.options.accessKey);
     form.append('data_type', 'audio');
-    form.append('sample_bytes', blob.size);
-    form.append('sample', blob);
+    form.append('sample_bytes', context.mp3Blob.size);
+    form.append('sample', context.mp3Blob);
     form.append('signature_version', context.signature.version);
     form.append('signature', hmacBase64);
     form.append('timestamp', context.timestamp);
@@ -115,11 +114,11 @@ const acrCloudMatcher = (() => {
     });
   }
 
-  function match(options, capture) {
+  function match(options, mp3Blob) {
     return (
       // object passed along the promise chain
       Promise.resolve({
-        wavBuffer: createWav(capture.channels, capture.sampleRate),
+        mp3Blob: mp3Blob,
         timestamp: Date.now(),
         options: options,
         signature: null, // assigned by generateSignature

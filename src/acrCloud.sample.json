@@ -108,4 +108,10 @@
   "result_type": 1
 }
 
-{"status":{"msg":"No result","code":1001,"version":"1.0"}}
+{
+  "status": {
+    "msg": "No result",
+    "code": 1001,
+    "version": "1.0"
+  }
+}

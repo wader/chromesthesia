@@ -37,6 +37,7 @@
     "createState": false,
     "reduceProps": false,
     "acrCloudMatcher": false,
+    "audDMatcher": false,
     "captureAudio": false,
     "defaultOptions": false,
     "matchers": false,
