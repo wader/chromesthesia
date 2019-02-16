@@ -4,7 +4,7 @@
 // dom('a', 'text') -> <a>text</a>
 // dom('a', {href: 'url'}, 'text') -> <a href="url">text</a>
 // dom('button', {click: (e) => { ... }}, ...) -> <button> with click event handler
-// dom('a', dom('b') -> <a><b></a>
+// dom('a', dom('b')) -> <a><b></a>
 // dom('span', [['nested'], 'arrays', dom('b')]) -> <span>nested arrays <b></span>
 // undefined and null are ignored
 function dom() {
