@@ -47,7 +47,6 @@
     "saveData": false,
     "arraySetEqual": false,
     "arraySetUnion": false,
-    "arraySetMinus": false,
-    "createWav": false
+    "arraySetMinus": false
   }
 }

@@ -24,7 +24,6 @@
       "state.js",
       "dom.js",
       "libshine.js",
-      "wav.js",
       "captureAudio.js",
       "acrCloud.js",
       "audD.js",

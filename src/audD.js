@@ -6,7 +6,6 @@
 const audDMatcher = (() => {
   function sendRequest(context) {
 
-    //let blob = new Blob([context.wavBuffer]);
     let form = new FormData();
     if (context.options.apiToken) {
         form.append('api_token', context.options.apiToken);
