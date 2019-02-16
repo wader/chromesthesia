@@ -35,15 +35,28 @@ function buildDOM(state) {
       // matches is an array of each matchers matches
       // m is a matchers matches (m.matcher is the actual matcher)
       // mm is a match
+
       matchesDOM = matches.map(m => m.matches.map(mm => {
+        let links = [
+          {
+            title: 'YouTube',
+            href: 'https://www.youtube.com/results?search_query=' + encodeURIComponent(mm.title)
+          },
+          ...mm.links
+        ];
+
         return H.div({'class': 'match'}, [
           H.div({'class': 'title'}, mm.title),
           H.div({'class': 'details'}, [
             H.span({'class': 'source'}, m.matcher.title),
-            H.span({'class': 'links'}, mm.links.map(l => {
+            H.span({'class': 'links'}, links.map(l => {
               return H.a(l.title, {
                 href: l.href,
-                target: l.external ? 'externalLinkDummy' : ''
+                target: l.external ? 'externalLinkDummy' : '',
+                click: l.external ? undefined : (e) => {
+                  e.preventDefault();
+                  chrome.tabs.create({url: e.target.href})
+                }
               });
             }))
           ])
