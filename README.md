@@ -16,6 +16,10 @@ audio recognition services. Currently two services are supported:
 [ACRCloud](https://www.acrcloud.com) - Requires an account but there is a
 free plan.
 
+## Thanks
+
+Uses [shine](https://github.com/toots/shine) to do mp3 compression.
+
 ## Known issues
 
 ##### Spotify link does not work
