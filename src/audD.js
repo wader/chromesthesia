@@ -5,7 +5,6 @@
 
 const audDMatcher = (() => {
   function sendRequest(context) {
-
     let form = new FormData();
     if (context.options.apiToken) {
         form.append('api_token', context.options.apiToken);
@@ -37,7 +36,7 @@ const audDMatcher = (() => {
 
     if (r.status === 'error') {
       return Promise.reject(r.error.error_message);
-    } else if (r.status.result === null) {
+    } else if (r.result === null) {
       return [];
     }
 
