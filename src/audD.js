@@ -11,7 +11,6 @@ const audDMatcher = (() => {
     }
     form.append('method', 'recognize');
     form.append('file', context.mp3Blob);
-    form.append('audio_format', 'mp3');
 
     let url = `https://api.audd.io`;
 
