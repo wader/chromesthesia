@@ -1,17 +1,17 @@
 # Chromesthesia
-Find out what song is playing in a Chrome tab.
 
-![](assets/demo.gif)
+![](assets/demo.png)
 
-Once you play something the Chromesthesia icon should appear. In newer versions of
-Chrome the icon might always be visible but grayed out when inactive.
-
-The extension is available in chrome web store at:  
+The extension is available in Chrome web store at 
 https://chrome.google.com/webstore/detail/chromesthesia/gocpionhjoififoliaelkfheedcafgin
 
 ## How does it work?
-It's a Chrome extension that captures the audio playing in a tab and sends it to
-audio recognition services. Currently two services are supported:  
+
+Play something and the Chromesthesia icon will appear.
+Click it and it will try to recognize what is playing.
+
+Currently these recognition services are supported:
+
 [audD](https://audd.io) - No account required. 10 requests free per day.  
 [ACRCloud](https://www.acrcloud.com) - Requires an account but there is a
 free plan.
@@ -23,17 +23,21 @@ Uses [shine](https://github.com/toots/shine) to do mp3 compression.
 ## Known issues
 
 ##### Spotify link does not work
+
 Try to enable the "Remember my choice for all links of this type" in the
 launch application dialog.
 
 ##### ACRCloud complaints that it can't generate fingerprint
+
 Try to increase capture duration in options. It should be at least 10 seconds.
 
 ## Help wanted
+
 - Improve interaction and graphical design
 - Write more matchers
 
 ## Development
+
 Clone repo and use "Load unpacked extension..." on the chrome extensions page.
 
 To auto reload on changes you can run [devd](https://github.com/cortesi/devd) in
@@ -42,5 +46,6 @@ Have a look at [dummyMatch.js.js](src/dummyMatch.js) and
 [matchers.js](src/matchers.js) for how to test matcher results.
 
 ## License
+
 Chromesthesia is licensed under the MIT license. See [LICENSE](LICENSE) for the
 full license text.
