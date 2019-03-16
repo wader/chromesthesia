@@ -57,7 +57,8 @@ function reduce(state, action) {
     },
     audibleTabIds: {
       addAudibleTabs: (propState, propAction) => arraySetUnion(propState, propAction),
-      removeAudibleTabs: (propState, propAction) => arraySetMinus(propState, propAction)
+      removeAudibleTabs: (propState, propAction) => arraySetMinus(propState, propAction),
+      removeTabs: (propState, propAction) => arraySetMinus(propState, propAction)
     },
     usedInTabIds: {
       openPageAction: (propState, propAction) => arraySetUnion(propState, [propAction.tabId]),
