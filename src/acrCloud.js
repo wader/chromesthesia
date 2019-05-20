@@ -5,7 +5,7 @@
 
 const acrCloudMatcher = (() => {
   function arrayBufferToString(b) {
-    let b8 = new Uint8Array(b);
+    const b8 = new Uint8Array(b);
 
     let s = '';
     for (let i = 0; i < b8.length; i++) {
@@ -23,7 +23,7 @@ const acrCloudMatcher = (() => {
 
     // string_to_sign = http_method+'\n'+http_uri+'\n'+access_key+'\n'+data_type+'\n'+signature_version+'\n'+str(timestamp)
     // sign = base64.b64encode(hmac.new(access_secret, string_to_sign, digestmod=hashlib.sha1).digest())
-    let signString = (
+    const signString = (
       httpMethod + '\n' +
       httpUri + '\n' +
       context.options.accessKey + '\n' +
@@ -55,9 +55,9 @@ const acrCloudMatcher = (() => {
   }
 
   function sendRequest(context) {
-    let hmacBase64 = btoa(arrayBufferToString(context.signature.hmacBuffer));
+    const hmacBase64 = btoa(arrayBufferToString(context.signature.hmacBuffer));
 
-    let form = new FormData();
+    const form = new FormData();
     form.append('access_key', context.options.accessKey);
     form.append('data_type', 'audio');
     form.append('sample_bytes', context.mp3Blob.size);
@@ -66,7 +66,7 @@ const acrCloudMatcher = (() => {
     form.append('signature', hmacBase64);
     form.append('timestamp', context.timestamp);
 
-    let url = `http://${context.options.host}/v1/identify`;
+    const url = `http://${context.options.host}/v1/identify`;
 
     return (
       fetch(url, {method: 'POST', body: form})
@@ -85,7 +85,7 @@ const acrCloudMatcher = (() => {
   }
 
   function transformResponse(context) {
-    let r = context.jsonResponse;
+    const r = context.jsonResponse;
     const statusNoResult = 1001;
 
     if (r.status.code === statusNoResult) {
@@ -97,7 +97,7 @@ const acrCloudMatcher = (() => {
     return r.metadata.music.map(m => {
       let links = [];
       if (m.external_metadata) {
-        let em = m.external_metadata;
+        const em = m.external_metadata;
         if (em.spotify) {
           links.push({
             external: true,

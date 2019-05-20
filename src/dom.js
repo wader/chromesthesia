@@ -8,15 +8,15 @@
 // dom('span', [['nested'], 'arrays', dom('b')]) -> <span>nested arrays <b></span>
 // undefined and null are ignored
 function dom() {
-  let elm = document.createElement(arguments[0]);
+  const elm = document.createElement(arguments[0]);
 
   for(let i = 1; i < arguments.length; i++) {
-    let arg = arguments[i];
+    const arg = arguments[i];
 
     if (typeof(arg) === 'string') {
       elm.textContent = arg;
     } else if (arg instanceof Element || arg instanceof Array) {
-      let flatAppend = arg => {
+      const flatAppend = arg => {
         if (arg instanceof Element) {
           arg = [arg];
         }
@@ -37,7 +37,7 @@ function dom() {
       flatAppend(arg);
     } else if (arg !== null && typeof(arg) === 'object') {
       Object.keys(arg).forEach(p => {
-        let v = arg[p];
+        const v = arg[p];
         if (typeof(v) === 'function') {
           elm.addEventListener(p, v);
         } else if (v !== undefined && v !== null) {

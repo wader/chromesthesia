@@ -5,14 +5,14 @@
 
 const audDMatcher = (() => {
   function sendRequest(context) {
-    let form = new FormData();
+    const form = new FormData();
     if (context.options.apiToken) {
         form.append('api_token', context.options.apiToken);
     }
     form.append('method', 'recognize');
     form.append('file', context.mp3Blob);
 
-    let url = `https://api.audd.io`;
+    const url = `https://api.audd.io`;
 
     return (
       fetch(url, {method: 'POST', body: form})
@@ -31,7 +31,7 @@ const audDMatcher = (() => {
   }
 
   function transformResponse(context) {
-    let r = context.jsonResponse;
+    const r = context.jsonResponse;
 
     if (r.status === 'error') {
       return Promise.reject(r.error.error_message);
