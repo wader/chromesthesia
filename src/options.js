@@ -21,14 +21,14 @@ function matcherInputsToOptions() {
 }
 
 function buildDOM(state) {
-  return H.div([
-    H.div(state.matchers.map(m => {
-      return H.div({'class': 'section'}, [
-        H.div({'class': 'name'}, m.title),
-        H.div({'class': 'options'}, m.options.map(o => {
-          return H.div({'class': 'option'}, [
-            H.label(o.title),
-            H.input({
+  return D.div([
+    D.div(state.matchers.map(m => {
+      return D.div({'class': 'section'}, [
+        D.div({'class': 'name'}, m.title),
+        D.div({'class': 'options'}, m.options.map(o => {
+          return D.div({'class': 'option'}, [
+            D.label(o.title),
+            D.input({
               type: 'text',
               name: `${m.name}_${o.name}`,
               value: (state.options && state.options[m.name] && state.options[m.name][o.name]) || '',
@@ -40,16 +40,16 @@ function buildDOM(state) {
             })
           ]);
         })),
-        H.div({'class': 'description'}, m.description)
+        D.div({'class': 'description'}, m.description)
       ]);
     })),
 
-    H.div({'class': 'section'}, [
-      H.div({'class': 'name'}, 'Options'),
-      H.div({'class': 'options'},
-      H.div({'class': 'option'}, [
-        H.label('Listen duration'),
-        H.input({
+    D.div({'class': 'section'}, [
+      D.div({'class': 'name'}, 'Options'),
+      D.div({'class': 'options'},
+      D.div({'class': 'option'}, [
+        D.label('Listen duration'),
+        D.input({
           type: 'text',
           value: state.options.captureDuration,
           placeholder: 'Duration in seconds',
@@ -62,9 +62,9 @@ function buildDOM(state) {
           }
         })
       ]),
-      H.div({'class': 'option'}, [
-        H.label('Show for all tabs'),
-        H.input(Object.assign({
+      D.div({'class': 'option'}, [
+        D.label('Show for all tabs'),
+        D.input(Object.assign({
           type: 'checkbox',
           click: (e) => {
             chrome.storage.sync.set({showForAllTabs: e.target.checked});

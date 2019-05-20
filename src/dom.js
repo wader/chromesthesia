@@ -54,7 +54,7 @@ function dom() {
   return elm;
 }
 
-const H = {
+const D = {
   div: dom.bind(undefined, 'div'),
   span: dom.bind(undefined, 'span'),
   button: dom.bind(undefined, 'button'),

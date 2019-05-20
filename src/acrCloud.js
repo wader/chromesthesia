@@ -162,14 +162,14 @@ const acrCloudMatcher = (() => {
         placeholder: '40 characters'
       }
     ],
-    description: H.div([
-      H.p('To use ACRCloud you need an account. There is a free plan that allow around hundred recognitions per day. You can pay to do more.'),
-      H.ul([
-        H.li('Sign up at ', H.a({href: 'https://www.acrcloud.com'}, 'https://www.acrcloud.com')),
-        H.li('Sign in and go to console'),
-        H.li('Creata a new "Audio & Video Recognition" project'),
-        H.li('Choose any name you want, select "Line-in audio", check the "ACRCloud Music" bucket and check "Enable 3rd Party ID Integration"'),
-        H.li('Now select the created project and look at the details / description tab for host, access key and access secret to configure')
+    description: D.div([
+      D.p('To use ACRCloud you need an account. There is a free plan that allow around hundred recognitions per day. You can pay to do more.'),
+      D.ul([
+        D.li('Sign up at ', D.a({href: 'https://www.acrcloud.com'}, 'https://www.acrcloud.com')),
+        D.li('Sign in and go to console'),
+        D.li('Creata a new "Audio & Video Recognition" project'),
+        D.li('Choose any name you want, select "Line-in audio", check the "ACRCloud Music" bucket and check "Enable 3rd Party ID Integration"'),
+        D.li('Now select the created project and look at the details / description tab for host, access key and access secret to configure')
       ])
     ]),
     validOptions: validOptions,

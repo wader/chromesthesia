@@ -4,19 +4,19 @@ const requestDurationGuess = 1.5;
 
 function buildDOM(state) {
   if (state.capture.status === 'options') {
-    return H.div({'class': 'options'}, [
-      H.span({'class': 'message'}, 'Some configuration is needed'),
-      H.button('Open options', {click: (e) => {
+    return D.div({'class': 'options'}, [
+      D.span({'class': 'message'}, 'Some configuration is needed'),
+      D.button('Open options', {click: (e) => {
         e.preventDefault();
         chrome.runtime.openOptionsPage();
       }})
     ]);
   } else if (state.capture.status === 'capturing') {
-    return H.div(
+    return D.div(
       {'class': 'capturing'},
       [
         'Listening...',
-        H.div({
+        D.div({
           'class': 'progress',
           'style': (
             'animation-duration: ' + (state.options.captureDuration + requestDurationGuess) + 's;' +
@@ -45,12 +45,12 @@ function buildDOM(state) {
           ...mm.links
         ];
 
-        return H.div({'class': 'match'}, [
-          H.div({'class': 'title'}, mm.title),
-          H.div({'class': 'details'}, [
-            H.span({'class': 'source'}, m.matcher.title),
-            H.span({'class': 'links'}, links.map(l => {
-              return H.a(l.title, {
+        return D.div({'class': 'match'}, [
+          D.div({'class': 'title'}, mm.title),
+          D.div({'class': 'details'}, [
+            D.span({'class': 'source'}, m.matcher.title),
+            D.span({'class': 'links'}, links.map(l => {
+              return D.a(l.title, {
                 href: l.href,
                 target: l.external ? 'externalLinkDummy' : '',
                 click: l.external ? undefined : (e) => {
@@ -63,23 +63,23 @@ function buildDOM(state) {
         ]);
       }));
     } else {
-      matchesDOM = H.span({'class': 'no-matches'}, 'No matches :(');
+      matchesDOM = D.span({'class': 'no-matches'}, 'No matches :(');
     }
 
     let errorsDOM;
     let errors = state.capture.errors;
     if (errors.length > 0) {
       let messages = errors.map(e => (e.matcher.title + ': ' + e.error));
-      errorsDOM = H.span(
+      errorsDOM = D.span(
         {'class': 'errors'},
-        messages.map(e => H.div({'class': 'error'}, e))
+        messages.map(e => D.div({'class': 'error'}, e))
       );
     }
 
-    return H.div({'class': 'result'}, [
+    return D.div({'class': 'result'}, [
       matchesDOM,
       errorsDOM,
-      H.button('Listen again', {click: (e) => {
+      D.button('Listen again', {click: (e) => {
         e.preventDefault();
         chrome.runtime.sendMessage({action: {startCapture: true}});
       }})

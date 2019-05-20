@@ -121,9 +121,9 @@ const audioTagMatcher = (() => {
         required: true,
       }
     ],
-    description: H.div([
-      H.p('AudioTag requires and API key to be used. Both paid and limited free version requires registration.'),
-      H.p('Go to ', [H.a({href: 'https://audiotag.info/'}, 'https://audiotag.info/'), ' for more information.'])
+    description: D.div([
+      D.p('AudioTag requires and API key to be used. Both paid and limited free version requires registration.'),
+      D.p('Go to ', [D.a({href: 'https://audiotag.info/'}, 'https://audiotag.info/'), ' for more information.'])
     ]),
     validOptions: validOptions,
     match: match

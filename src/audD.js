@@ -67,9 +67,9 @@ const audDMatcher = (() => {
         required: false,
       }
     ],
-    description: H.div([
-      H.p('audD offers 10 free requests per day. Contact them at api@audd.io for a access token.'),
-      H.p('Go to ', [H.a({href: 'https://audd.io'}, 'https://audd.io'), ' for more information.'])
+    description: D.div([
+      D.p('audD offers 10 free requests per day. Contact them at api@audd.io for a access token.'),
+      D.p('Go to ', [D.a({href: 'https://audd.io'}, 'https://audd.io'), ' for more information.'])
     ]),
     validOptions: () => true,
     match: match
