@@ -15,7 +15,8 @@
     "tabCapture",
     "http://*.acrcloud.com/",
     "https://*.acrcloud.com/",
-    "https://api.audd.io/"
+    "https://api.audd.io/",
+    "https://audiotag.info/"
   ],
   "background": {
     "scripts": [
@@ -27,6 +28,7 @@
       "captureAudio.js",
       "acrCloud.js",
       "audD.js",
+      "audioTag.js",
       "dummyMatch.js",
       "matchers.js",
       "background.js"

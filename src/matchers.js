@@ -3,6 +3,7 @@
 const matchers = [
   acrCloudMatcher,
   audDMatcher,
+  audioTagMatcher,
   // ,
   // dummySuccessMatcher,
   // dummySuccessMatcher,

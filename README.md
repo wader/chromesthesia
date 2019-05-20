@@ -14,6 +14,8 @@ Currently these recognition services are supported:
 
 [audD](https://audd.io) - No account required. 10 requests free per day.  
 [ACRCloud](https://www.acrcloud.com) - Requires an account but there is a
+free plan.  
+[AudioTag](https://audiotag.info) - Requires an account but there is a
 free plan.
 
 ## Thanks

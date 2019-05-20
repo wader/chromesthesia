@@ -1,0 +1,52 @@
+curl \
+  --trace-ascii identify.dump \
+  -X POST \
+  -F apikey=... \
+  -F action=identify \
+  -F file=@capture.mp3  \
+  https://audiotag.info/api
+
+  curl \
+  -X POST \
+  -F apikey=... \
+  -F action=get_result \
+  -F token=a57777cbce4b05614b4e96af06e408d4  \
+  https://audiotag.info/api
+  
+{
+  "success": true,
+  "error": "",
+  "result": "found",
+  "data": [
+    {
+      "time": "0 - 10",
+      "confidence": 57,
+      "tracks": [
+        [
+          "Acid Rain",
+          "Lorn",
+          "The Maze To Nowhere, Part 2",
+          2014
+        ]
+      ]
+    }
+  ]
+}
+
+{
+  "success": false,
+  "error": "file type is not allowed"
+}
+
+{
+  "success": true,
+  "error": "",
+  "result": "not found"
+}
+
+{
+  "success": true,
+  "error": null,
+  "job_status": "wait",
+  "token": "fe57a3d3f9615891fe33e6b5ddaa540c"
+}
