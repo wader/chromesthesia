@@ -70,14 +70,14 @@ const acrCloudMatcher = (() => {
 
     return (
       fetch(url, {method: 'POST', body: form})
-      .then(response =>  {
-        if (!response.ok) {
+      .then(r =>  {
+        if (!r.ok) {
           return Promise.reject('network');
         }
         return (
-          response.json()
-          .then(jsonResponse => {
-            return Object.assign(context, {jsonResponse: jsonResponse});
+          r.json()
+          .then(r => {
+            return Object.assign(context, {jsonResponse: r});
           })
         );
       })
