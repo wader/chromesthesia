@@ -4,6 +4,3 @@ lint:
 zip:
 	git archive -o chromesthesia.zip master:src
 
-crx:
-	# gem install crxmake
-	ruby -rcrxmake -e 'CrxMake.make(:ex_dir => "src", :crx_output => "chromesthesia.crx")'
