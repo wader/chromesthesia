@@ -96,7 +96,7 @@ body {
 }
 
 .result .errors .error {
-  white-space: nowrap;
+  width: 300px;
 }
 
 .result button {

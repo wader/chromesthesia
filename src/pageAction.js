@@ -72,7 +72,7 @@ function buildDOM(state) {
       let messages = errors.map(e => (e.matcher.title + ': ' + e.error));
       errorsDOM = H.span(
         {'class': 'errors'},
-        messages.map(e => H.span({'class': 'error'}, e))
+        messages.map(e => H.div({'class': 'error'}, e))
       );
     }
 
