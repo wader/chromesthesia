@@ -26,6 +26,7 @@
       "dom.js",
       "libshine.js",
       "captureAudio.js",
+      "promiseUtils.js",
       "acrCloud.js",
       "audD.js",
       "audioTag.js",
