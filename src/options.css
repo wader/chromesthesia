@@ -3,7 +3,7 @@ body {
 }
 
 .section {
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .option input[type=text] {
@@ -29,14 +29,18 @@ body {
 }
 
 .option label {
-    width: 120px;
-    text-align: right;
-    padding-right: 10px;
-    display: inline-block;
+  width: 120px;
+  text-align: right;
+  padding-right: 10px;
+  display: inline-block;
 }
 
 .description {
   display: inline-block;
   width: 400px;
   margin-top: -10px;
+}
+
+footer {
+  text-align: center;
 }
