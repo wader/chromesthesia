@@ -18,8 +18,7 @@ function reloadOnChange() {
 // uses only JSON friendly types so that sendMessage works
 const initialState = {
   options: {
-    captureDuration: defaultOptions.captureDuration,
-    showForAllTabs: defaultOptions.showForAllTabs
+    captureDuration: defaultOptions.captureDuration
   },
   capture: {
     status: 'idle'
@@ -99,14 +98,14 @@ function update(oldState, newState, defer) {
 
   let oldHasValidMatches = validMatchersForOptions(oldState.options).length > 0;
   let oldPageActionVisibleIds;
-  if (oldIsCapturing || !oldHasValidMatches || oldState.options.showForAllTabs) {
+  if (oldIsCapturing || !oldHasValidMatches) {
     oldPageActionVisibleIds = oldState.allTabIds;
   } else {
     oldPageActionVisibleIds = arraySetUnion(oldState.audibleTabIds, oldState.usedInTabIds);
   }
   let newHasValidMatches = validMatchersForOptions(newState.options).length > 0;
   let newPageActionVisibleIds;
-  if (newIsCapturing || !newHasValidMatches || newState.options.showForAllTabs) {
+  if (newIsCapturing || !newHasValidMatches) {
     newPageActionVisibleIds = newState.allTabIds;
   } else {
     newPageActionVisibleIds = arraySetUnion(newState.audibleTabIds, newState.usedInTabIds);

@@ -61,15 +61,6 @@ function buildDOM(state) {
             chrome.storage.sync.set({captureDuration: d});
           }
         })
-      ]),
-      D.div({'class': 'option'}, [
-        D.label('Show for all tabs'),
-        D.input(Object.assign({
-          type: 'checkbox',
-          click: (e) => {
-            chrome.storage.sync.set({showForAllTabs: e.target.checked});
-          }
-        }, state.options.showForAllTabs ? {checked: true} : {}))
       ])
     )])
   ]);
