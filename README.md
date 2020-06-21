@@ -47,6 +47,12 @@ the repo root `devd -l .` and uncomment `reloadOnChange();` in [background.js](s
 Have a look at [dummyMatch.js.js](src/dummyMatch.js) and
 [matchers.js](src/matchers.js) for how to test matcher results.
 
+## Privacy
+
+The extension itself does not track usage or collect any personal information. But the services
+used to do music recognition might track of collect infomration. Please see the privacy
+policies for audD, ACRCloud and AudioTag for more infomration.
+
 ## License
 
 Chromesthesia is licensed under the MIT license. See [LICENSE](LICENSE) for the
