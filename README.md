@@ -3,7 +3,9 @@
 ![](assets/demo.png)
 
 The extension is available in Chrome web store at 
-https://chrome.google.com/webstore/detail/chromesthesia/gocpionhjoififoliaelkfheedcafgin
+https://chrome.google.com/webstore/detail/chromesthesia/gocpionhjoififoliaelkfheedcafgin  
+or Microsoft Edge Add-ons at  
+https://microsoftedge.microsoft.com/addons/detail/chromesthesia/jbolklncikkponmchgncibegnlcpkdph
 
 ## How does it work?
 
