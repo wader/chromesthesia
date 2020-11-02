@@ -10,7 +10,7 @@ https://microsoftedge.microsoft.com/addons/detail/chromesthesia/jbolklncikkponmc
 ## How does it work?
 
 Play something and the Chromesthesia icon will appear.
-Click it and it will try to recognize what is playing.
+Click it and it will try to recognise what is playing.
 
 Currently these recognition services are supported:
 
@@ -52,8 +52,8 @@ Have a look at [dummyMatch.js.js](src/dummyMatch.js) and
 ## Privacy
 
 The extension itself does not track usage or collect any personal information. But the services
-used to do music recognition might track of collect infomration. Please see the privacy
-policies for audD, ACRCloud and AudioTag for more infomration.
+used to do music recognition might track of collect information. Please see the privacy
+policies for audD, ACRCloud and AudioTag for more information.
 
 ## License
 
