@@ -1,5 +1,6 @@
 'use strict';
 
+// transcode + request time
 const requestDurationGuess = 4;
 
 function buildDOM(state) {
@@ -36,7 +37,22 @@ function buildDOM(state) {
       // m is a matchers matches (m.matcher is the actual matcher)
       // mm is a match
 
-      matchesDOM = matches.map(m => m.matches.map(mm => {
+      let groupedByTitleMatches = matches.reduce((acc, mcur) => mcur.matches.reduce((acc, mmcur) => {
+        let mm = acc[mmcur.title];
+        if (!mm) {
+          mm = {
+            title: mmcur.title,
+            matchers: [],
+            links: [],
+          };
+          acc[mmcur.title] = mm;
+        }
+        mm.matchers.push(mcur.matcher);
+        mm.links.push.apply(mmcur.links)
+        return acc;
+      }, acc), {});
+
+      matchesDOM = Object.values(groupedByTitleMatches).map(mm => {
         let links = [
           {
             title: 'YouTube',
@@ -48,7 +64,7 @@ function buildDOM(state) {
         return D.div({'class': 'match'}, [
           D.div({'class': 'title'}, mm.title),
           D.div({'class': 'details'}, [
-            D.span({'class': 'source'}, m.matcher.title),
+            D.span({'class': 'source'}, mm.matchers.map(m => m.title).join(", ")),
             D.span({'class': 'links'}, links.map(l => {
               return D.a(l.title, {
                 href: l.href,
@@ -61,7 +77,7 @@ function buildDOM(state) {
             }))
           ])
         ]);
-      }));
+      });
     } else {
       matchesDOM = D.span({'class': 'no-matches'}, 'No matches :(');
     }
