@@ -1,6 +1,6 @@
 'use strict';
 
-const requestDurationGuess = 1.5;
+const requestDurationGuess = 4;
 
 function buildDOM(state) {
   if (state.capture.status === 'options') {
