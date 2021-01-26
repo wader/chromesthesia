@@ -49,7 +49,9 @@ const captureAudio = (() => {
         audio.srcObject = stream;
         audio.play();
 
-        let context = new AudioContext();
+        // https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/AudioContext#parameters
+        // default latencyHint seems to cause glitches
+        let context = new AudioContext({latencyHint: "playback"});
         let sampleRate = context.sampleRate;
         let audioInput = context.createMediaStreamSource(stream);
 
