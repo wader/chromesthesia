@@ -10,7 +10,7 @@ https://microsoftedge.microsoft.com/addons/detail/chromesthesia/jbolklncikkponmc
 ## How does it work?
 
 Play something and the Chromesthesia icon will appear.
-Click it and it will try to recognise what is playing.
+Click it and it will try to recognize what is playing.
 
 Currently these recognition services are supported:
 

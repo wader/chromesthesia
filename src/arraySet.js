@@ -1,6 +1,6 @@
 'use strict';
 
-// functions to use array as a set. usefull when variables will be
+// functions to use array as a set. useful when variables will be
 // serialized by sendMessage etc.
 
 // compare two arrays as sets

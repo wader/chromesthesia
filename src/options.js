@@ -1,6 +1,6 @@
 'use strict';
 
-// Uncomment to mock chome.storage.sync during dev
+// Uncomment to mock chrome.storage.sync during dev
 // if (!chrome.storage) {
 //   chrome.storage = {
 //     sync: {

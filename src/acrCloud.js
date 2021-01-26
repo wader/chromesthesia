@@ -167,7 +167,7 @@ const acrCloudMatcher = (() => {
       D.ul([
         D.li('Sign up at ', D.a({href: 'https://www.acrcloud.com'}, 'https://www.acrcloud.com')),
         D.li('Sign in and go to console'),
-        D.li('Creata a new "Audio & Video Recognition" project'),
+        D.li('Create a new "Audio & Video Recognition" project'),
         D.li('Choose any name you want, select "Line-in audio", check the "ACRCloud Music" bucket and check "Enable 3rd Party ID Integration"'),
         D.li('Now select the created project and look at the details / description tab for host, access key and access secret to configure')
       ])
