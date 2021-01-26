@@ -48,7 +48,7 @@ function reduce(state, action) {
         }
       },
       startCapture: (_propState, _propAction) => ({status: 'capturing', start: Date.now()}),
-      captureResult: (propState, propAction) => Object.assign({status: 'result'}, propAction)
+      captureResult: (_propState, propAction) => Object.assign({status: 'result'}, propAction)
     },
     allTabIds: {
       createTabs: (propState, propAction) => arraySetUnion(propState, propAction),
