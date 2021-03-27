@@ -13,7 +13,6 @@
   "permissions": [
     "storage",
     "tabCapture",
-    "http://*.acrcloud.com/",
     "https://*.acrcloud.com/",
     "https://api.audd.io/",
     "https://audiotag.info/"

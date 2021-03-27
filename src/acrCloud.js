@@ -66,7 +66,7 @@ const acrCloudMatcher = (() => {
     form.append('signature', hmacBase64);
     form.append('timestamp', context.timestamp);
 
-    const url = `http://${context.options.host}/v1/identify`;
+    const url = `https://${context.options.host}/v1/identify`;
 
     return (
       fetch(url, {method: 'POST', body: form})
