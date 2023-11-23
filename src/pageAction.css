@@ -4,6 +4,7 @@ body {
   font-family: "Helvetica Neue", "Lucida Grande", sans-serif;
   font-size: 95%;
   margin: 0px;
+  display: inline-block;
 }
 
 .progress {
